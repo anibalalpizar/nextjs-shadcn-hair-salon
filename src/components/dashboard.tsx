@@ -111,6 +111,7 @@ export function Dashboard() {
 
     // Process service data (using bill information)
     // For demo purposes, we'll categorize by the number of adults, children, seniors
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const totalPersons = bills.reduce(
       (sum, bill) =>
         sum +

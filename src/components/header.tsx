@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Users, Calendar, Receipt, BarChart3, UserCog } from "lucide-react"
 import Link from "next/link"
 import { ThemeToggle } from "./theme-toggle"
-import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 
 export function Header() {
   const { user, logout } = useAuth()
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
 
   if (!user) return null
 
@@ -44,8 +42,8 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     "flex items-center gap-2 text-sm font-medium transition-colors",
-                    isActive 
-                      ? "text-primary font-semibold" 
+                    isActive
+                      ? "text-primary font-semibold"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -62,10 +60,10 @@ export function Header() {
             <div className="flex items-center gap-2">
               <span className="text-sm text-foreground">{user.username}</span>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={logout} 
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={logout}
               className="hover:bg-accent"
             >
               Salir

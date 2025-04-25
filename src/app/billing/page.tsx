@@ -32,7 +32,6 @@ import {
   Plus,
   Printer,
   Search,
-  Download,
   MoreHorizontal,
   Receipt,
   Calendar,
@@ -137,6 +136,7 @@ export default function BillingPage() {
       cantidadAdultosMayores: selectedReservation.cantidadAdultosMayores,
     }
 
+    // @ts-expect-error literal type
     const updatedBills = saveBill(newBill)
     setBills(updatedBills)
     setIsDialogOpen(false)
@@ -419,7 +419,9 @@ export default function BillingPage() {
                 <div className="flex items-center gap-2">
                   <Select
                     value={dateFilter}
-                    onValueChange={(value: any) => setDateFilter(value)}
+                    onValueChange={(
+                      value: "all" | "today" | "week" | "month"
+                    ) => setDateFilter(value)}
                   >
                     <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Filtrar por fecha" />
@@ -430,7 +432,7 @@ export default function BillingPage() {
                       <SelectItem value="week">Última semana</SelectItem>
                       <SelectItem value="month">Último mes</SelectItem>
                     </SelectContent>
-                  </Select>              
+                  </Select>
                 </div>
               </div>
             </CardHeader>

@@ -19,10 +19,30 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { motion, AnimatePresence } from "framer-motion"
-import { Pencil, Trash2, Search, UserPlus, Users, Download, MoreHorizontal } from "lucide-react"
-import { type Employee, getEmployees, saveEmployee, updateEmployee, deleteEmployee } from "@/lib/employees"
+import {
+  Pencil,
+  Trash2,
+  Search,
+  UserPlus,
+  Users,
+  Download,
+  MoreHorizontal,
+} from "lucide-react"
+import {
+  type Employee,
+  getEmployees,
+  saveEmployee,
+  updateEmployee,
+  deleteEmployee,
+} from "@/lib/employees"
 import { useAuth } from "@/app/context/auth-context"
 import {
   DropdownMenu,
@@ -36,7 +56,9 @@ import {
 export default function EmployeesPage() {
   const { user } = useAuth()
   const [employees, setEmployees] = useState<Employee[]>(() => getEmployees())
-  const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>(employees)
+  const [filteredEmployees, setFilteredEmployees] =
+    useState<Employee[]>(employees)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isEditing, setIsEditing] = useState(false)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [currentEmployee, setCurrentEmployee] = useState<Partial<Employee>>({})
@@ -52,7 +74,7 @@ export default function EmployeesPage() {
         (emp) =>
           emp.nombre.toLowerCase().includes(searchQuery.toLowerCase()) ||
           emp.cedula.includes(searchQuery) ||
-          emp.correo.toLowerCase().includes(searchQuery.toLowerCase()),
+          emp.correo.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
 
@@ -122,7 +144,9 @@ export default function EmployeesPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold tracking-tight">Empleados</h1>
-              <p className="text-muted-foreground">Gestiona la información de los empleados de la empresa</p>
+              <p className="text-muted-foreground">
+                Gestiona la información de los empleados de la empresa
+              </p>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
@@ -133,8 +157,14 @@ export default function EmployeesPage() {
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px]">
                 <DialogHeader>
-                  <DialogTitle>{currentEmployee.id ? "Editar Empleado" : "Agregar Nuevo Empleado"}</DialogTitle>
-                  <DialogDescription>Complete el formulario con los datos del empleado</DialogDescription>
+                  <DialogTitle>
+                    {currentEmployee.id
+                      ? "Editar Empleado"
+                      : "Agregar Nuevo Empleado"}
+                  </DialogTitle>
+                  <DialogDescription>
+                    Complete el formulario con los datos del empleado
+                  </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4 py-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -233,7 +263,9 @@ export default function EmployeesPage() {
                           <SelectItem value="Asistente">Asistente</SelectItem>
                           <SelectItem value="Vendedor">Vendedor</SelectItem>
                           <SelectItem value="Técnico">Técnico</SelectItem>
-                          <SelectItem value="Administrativo">Administrativo</SelectItem>
+                          <SelectItem value="Administrativo">
+                            Administrativo
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -279,7 +311,9 @@ export default function EmployeesPage() {
                     >
                       Cancelar
                     </Button>
-                    <Button type="submit">{currentEmployee.id ? "Actualizar" : "Guardar"}</Button>
+                    <Button type="submit">
+                      {currentEmployee.id ? "Actualizar" : "Guardar"}
+                    </Button>
                   </DialogFooter>
                 </form>
               </DialogContent>
@@ -300,7 +334,10 @@ export default function EmployeesPage() {
                   />
                 </div>
                 <div className="flex items-center gap-2">
-                  <Select value={filterPosition} onValueChange={setFilterPosition}>
+                  <Select
+                    value={filterPosition}
+                    onValueChange={setFilterPosition}
+                  >
                     <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Filtrar por puesto" />
                     </SelectTrigger>
@@ -352,40 +389,64 @@ export default function EmployeesPage() {
                                     </AvatarFallback>
                                   </Avatar>
                                   <div>
-                                    <div className="font-medium">{employee.nombre}</div>
-                                    <div className="text-sm text-muted-foreground">{employee.cedula}</div>
+                                    <div className="font-medium">
+                                      {employee.nombre}
+                                    </div>
+                                    <div className="text-sm text-muted-foreground">
+                                      {employee.cedula}
+                                    </div>
                                   </div>
                                 </div>
                               </td>
                               <td className="p-3">
                                 <div className="text-sm">
                                   <div>{employee.correo}</div>
-                                  <div className="text-muted-foreground">{employee.telefono}</div>
+                                  <div className="text-muted-foreground">
+                                    {employee.telefono}
+                                  </div>
                                 </div>
                               </td>
                               <td className="p-3">
-                                <Badge variant="outline" className="font-normal">
+                                <Badge
+                                  variant="outline"
+                                  className="font-normal"
+                                >
                                   {employee.puesto}
                                 </Badge>
                               </td>
-                              <td className="p-3 font-medium">{formatCurrency(employee.salario)}</td>
+                              <td className="p-3 font-medium">
+                                {formatCurrency(employee.salario)}
+                              </td>
                               <td className="p-3">
-                                <Badge variant="secondary" className="font-normal">
+                                <Badge
+                                  variant="secondary"
+                                  className="font-normal"
+                                >
                                   {employee.comision}%
                                 </Badge>
                               </td>
                               <td className="p-3 text-right">
                                 <DropdownMenu>
                                   <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="h-8 w-8"
+                                    >
                                       <MoreHorizontal className="h-4 w-4" />
-                                      <span className="sr-only">Abrir menú</span>
+                                      <span className="sr-only">
+                                        Abrir menú
+                                      </span>
                                     </Button>
                                   </DropdownMenuTrigger>
                                   <DropdownMenuContent align="end">
-                                    <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+                                    <DropdownMenuLabel>
+                                      Acciones
+                                    </DropdownMenuLabel>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem onClick={() => handleEdit(employee)}>
+                                    <DropdownMenuItem
+                                      onClick={() => handleEdit(employee)}
+                                    >
                                       <Pencil className="mr-2 h-4 w-4" />
                                       Editar
                                     </DropdownMenuItem>
@@ -403,10 +464,15 @@ export default function EmployeesPage() {
                           ))
                         ) : (
                           <tr>
-                            <td colSpan={6} className="p-8 text-center text-muted-foreground">
+                            <td
+                              colSpan={6}
+                              className="p-8 text-center text-muted-foreground"
+                            >
                               <div className="flex flex-col items-center gap-2">
                                 <Users className="h-8 w-8" />
-                                <h3 className="font-medium">No se encontraron empleados</h3>
+                                <h3 className="font-medium">
+                                  No se encontraron empleados
+                                </h3>
                                 <p className="text-sm">
                                   {searchQuery || filterPosition !== "all"
                                     ? "Intente con otros criterios de búsqueda"
@@ -422,7 +488,8 @@ export default function EmployeesPage() {
                 </div>
               </div>
               <div className="mt-4 text-sm text-muted-foreground">
-                Mostrando {filteredEmployees.length} de {employees.length} empleados
+                Mostrando {filteredEmployees.length} de {employees.length}{" "}
+                empleados
               </div>
             </CardContent>
           </Card>
