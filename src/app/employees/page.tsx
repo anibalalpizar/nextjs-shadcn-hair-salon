@@ -33,7 +33,6 @@ import {
   Search,
   UserPlus,
   Users,
-  Download,
   MoreHorizontal,
 } from "lucide-react"
 import {
@@ -350,9 +349,6 @@ export default function EmployeesPage() {
                       ))}
                     </SelectContent>
                   </Select>
-                  <Button variant="outline" size="icon">
-                    <Download className="h-4 w-4" />
-                  </Button>
                 </div>
               </div>
             </CardHeader>

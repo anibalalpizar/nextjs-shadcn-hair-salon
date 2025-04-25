@@ -26,7 +26,6 @@ import {
   Search,
   UserPlus,
   Users,
-  Download,
   MoreHorizontal,
   Building,
 } from "lucide-react"
@@ -46,13 +45,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 export default function ClientsPage() {
   const { user } = useAuth()
@@ -61,6 +53,7 @@ export default function ClientsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [currentClient, setCurrentClient] = useState<Partial<Client>>({})
   const [searchQuery, setSearchQuery] = useState("")
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [clientType, setClientType] = useState("all")
 
   useEffect(() => {
@@ -266,22 +259,7 @@ export default function ClientsPage() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Select value={clientType} onValueChange={setClientType}>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Filtrar por tipo" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">Todos los clientes</SelectItem>
-                      <SelectItem value="individual">Particulares</SelectItem>
-                      <SelectItem value="company">Empresas</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button variant="outline" size="icon">
-                    <Download className="h-4 w-4" />
-                  </Button>
-                </div>
+                </div>       
               </div>
             </CardHeader>
             <CardContent>

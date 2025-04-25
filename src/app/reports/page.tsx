@@ -29,7 +29,6 @@ import {
   DollarSign,
   Clock,
   BarChart3,
-  Download,
   TrendingUp,
   TrendingDown,
   UserCog,
@@ -260,14 +259,6 @@ export default function ReportsPage() {
                       <span className="hidden sm:inline">Horarios</span>
                     </TabsTrigger>
                   </TabsList>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    <Download className="h-4 w-4" />
-                    <span className="hidden sm:inline">Exportar</span>
-                  </Button>
                 </div>
 
                 <TabsContent value="attendance" className="mt-0">

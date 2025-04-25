@@ -23,7 +23,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Calendar } from "@/components/ui/calendar"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
-import { Trash2, Plus, CalendarIcon, Search, Download, MoreHorizontal, Users, Clock, CalendarDays } from "lucide-react"
+import { Trash2, Plus, CalendarIcon, Search, MoreHorizontal, Users, Clock, CalendarDays } from "lucide-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import {
   DropdownMenu,
@@ -414,9 +414,6 @@ export default function ReservationsPage() {
                       </div>
                     </PopoverContent>
                   </Popover>
-                  <Button variant="outline" size="icon">
-                    <Download className="h-4 w-4" />
-                  </Button>
                 </div>
               </div>
             </CardHeader>
