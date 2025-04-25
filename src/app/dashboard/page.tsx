@@ -29,8 +29,10 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-1 p-6">
-        <Dashboard />
+      <main className="flex-1 py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <Dashboard />
+        </div>
       </main>
     </div>
   )
