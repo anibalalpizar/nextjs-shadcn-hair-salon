@@ -46,6 +46,7 @@ export function LoginForm() {
       if (!success) {
         setError("Credenciales inválidas. Intenta con admin/admin")
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Ha ocurrido un error. Por favor intenta de nuevo.")
     } finally {
