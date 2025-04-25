@@ -2,7 +2,7 @@ export const demoEmployees = [
   {
     id: "emp1",
     cedula: "1-1234-5678",
-    nombre: "Juan Pérez",
+    nombre: "Stephanie Chacón",
     direccion: "San José, Costa Rica",
     telefono: "8888-8888",
     correo: "juan@example.com",
@@ -13,7 +13,7 @@ export const demoEmployees = [
   {
     id: "emp2",
     cedula: "2-3456-7890",
-    nombre: "María González",
+    nombre: "Nancy Calderón",
     direccion: "Heredia, Costa Rica",
     telefono: "7777-7777",
     correo: "maria@example.com",
